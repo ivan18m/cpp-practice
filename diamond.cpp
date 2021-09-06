@@ -54,7 +54,7 @@ public:
     {
         std::cout << "Engine V constructed\n";
     };
-    ~EngineVehicle() 
+    virtual ~EngineVehicle() 
     {
         std::cout << "Engine V destroyed\n";
     }
@@ -83,7 +83,7 @@ public:
     {
         std::cout << "Road V constructed\n";
     };
-    ~RoadVehicle() 
+    virtual ~RoadVehicle() 
     {
         std::cout << "Road V destroyed\n";
     }
@@ -115,8 +115,8 @@ public:
      * @brief Facade
      * 
      */
-    virtual void start() {
-        std::cout << "Car Started\n" << std::endl;
+    void start() {
+        std::cout << "\nCar Started\n";
         std::cout << "Wheels: " << numOfWheels << "\n";
         std::cout << "HP: " << horsePower << "\n";
         EngineVehicle::makeSound();
