@@ -2,7 +2,7 @@
  * @file greatest_common_devisor.cpp
  * @author Ivan Mercep
  * @brief 
- * Greatest Common Devisor (GCD) also called Highest Common Factor (HCF) of N numbers
+ * Greatest Common Divisor (GCD) also called Highest Common Factor (HCF) of N numbers
  * is the largest positive integer that divides all numbers without giving a remainder.
  * 
  * Algorithm to determine GCD of N positive integers.
