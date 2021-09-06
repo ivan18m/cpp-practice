@@ -1,3 +1,15 @@
+/**
+ * @file balanced_brackets.cpp
+ * @author your name (you@domain.com)
+ * @brief 
+ * Solution for the balanced brackets problem using a stack
+ * @version 0.1
+ * @date 2021-09-06
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include <iostream>
 #include <unordered_map>
 

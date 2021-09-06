@@ -9,6 +9,7 @@
  * @copyright Copyright (c) 2021
  * 
  */
+
 #include <iostream>
 #include <vector>
 
@@ -21,13 +22,13 @@ int main()
     myVec.insert(it, 'z');          // insert 'z' after 2 elements
 
     for(char value : myVec)         // print
-        cout << value << " ";
+        std::cout << value << " ";
     std::cout << "\n === \n";
     
     myVec.erase(myVec.begin() + 1); // remove 2nd element
 
     for(char value : myVec)         // print
-        cout << value <<  " ";
+        std::cout << value <<  " ";
     std::cout << "\n";
 
     return 0;    

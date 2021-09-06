@@ -1,4 +1,3 @@
-
 /**
  * @file grades.cpp
  * @author Ivan Mercep
@@ -15,6 +14,7 @@
  * @copyright Copyright (c) 2021
  * 
  */
+
 #include <iostream>
 #include <vector>
 
