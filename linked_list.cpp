@@ -25,7 +25,9 @@ class LinkedList
     Node* head;
 public:
     LinkedList() : head(nullptr) {};
-    ~LinkedList() {};
+    ~LinkedList() {
+        delete[] head;
+    };
 
     /**
      * @brief 
@@ -36,13 +38,11 @@ public:
     void push(int value)
     {
         Node** it = &head;
-
-        while(true)
+        while(*it != nullptr)
         {
-            if(*it == nullptr)
-                it = &(*it)->next;
-            *it = new Node(value);
+            it = &(*it)->next;
         }
+        *it = new Node(value);
     }
 
     /**
@@ -68,7 +68,6 @@ public:
             prev = head;
             head = next; 
         }
-
         head = prev;
     }
 
