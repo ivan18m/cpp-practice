@@ -30,7 +30,7 @@ int someFunc()
 int main(int argc, char** argv) 
 {
     std::future<int> result_future = std::async(someFunc);
-    std::cout << "wait...\n";
+    std::cout << "wait...\n"; //this gets executed immidiately
     result_future.wait(); // wait for result_future to receive data (int)
     std::cout << result_future.get() << "\n";
 
