@@ -14,52 +14,56 @@
 
 #include <iostream>
 
-using namespace std;
-
-struct Node {
+struct Node 
+{
     int data;
     Node *left;
     Node *right;
 };
 
 // <root> <left> <right>
-void preorder(Node* pRoot) {
+void preorder(Node* pRoot) 
+{
     if(pRoot == nullptr)
         return;
 
-    cout << pRoot->data << " ";
+    std::cout << pRoot->data << " ";
     preorder(pRoot->left);
     preorder(pRoot->right);
 }
 
 // <left> <root> <right>
-void inorder(Node* pRoot) {
+void inorder(Node* pRoot) 
+{
     if(pRoot == nullptr)
         return;
 
     inorder(pRoot->left);
-    cout << pRoot->data << " ";
+    std::cout << pRoot->data << " ";
     inorder(pRoot->right);
 }
 
 // <left> <right> <root>
-void postorder(Node* pRoot) {
+void postorder(Node* pRoot) 
+{
     if(pRoot == nullptr)
         return;
         
     postorder(pRoot->left);
     postorder(pRoot->right);
-    cout << pRoot->data << " ";
+    std::cout << pRoot->data << " ";
 }
 
-Node* getNewNode(int data) {
+Node* getNewNode(int data) 
+{
     Node* newNode = new Node();
     newNode->data = data;
     newNode->left = newNode->right = nullptr;
     return newNode;
 }
 
-Node* insert(Node* pRoot, int data) {
+Node* insert(Node* pRoot, int data) 
+{
     if(pRoot == nullptr)
         pRoot = getNewNode(data);
     else if (data <= pRoot->data)
@@ -69,7 +73,8 @@ Node* insert(Node* pRoot, int data) {
     return pRoot;
 }
 
-Node* swap(Node* pRoot) {
+Node* swap(Node* pRoot) 
+{
     if(pRoot == nullptr)
         return pRoot;
     Node* temp = pRoot->left;
@@ -81,7 +86,8 @@ Node* swap(Node* pRoot) {
     return pRoot;
 }
 
-int main() {
+int main() 
+{
     Node* root = nullptr;
     root = insert(root, 15);
     root = insert(root, 20);
@@ -98,12 +104,12 @@ int main() {
     */
 
     inorder(root);
-    cout << endl;
+    std::cout << "\n";
 
     swap(root);
     
     inorder(root);
-    cout << endl;
+    std::cout << "\n";
     
     delete root;
     return 0;
