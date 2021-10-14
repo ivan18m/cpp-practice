@@ -1,13 +1,13 @@
 /**
  * @file linked_list.cpp
  * @author Ivan Mercep
- * @brief 
+ * @brief
  * insert, reverse and print Linked List
  * @version 0.1
  * @date 2021-09-05
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <iostream>
@@ -15,30 +15,35 @@
 struct Node
 {
     int value;
-    Node* next;
+    Node *next;
 
-    Node(int value) : value(value), next(nullptr) {};
+    Node(int value)
+        : value(value)
+        , next(nullptr){};
 };
 
-class LinkedList 
+class LinkedList
 {
-    Node* head;
+    Node *head;
+
 public:
-    LinkedList() : head(nullptr) {};
-    ~LinkedList() {
+    LinkedList()
+        : head(nullptr){};
+    ~LinkedList()
+    {
         delete[] head;
     };
 
     /**
-     * @brief 
+     * @brief
      * Have to use pointer to pointer to keep head pointing to the first element
-     * 
+     *
      * @param value node's value
      */
     void push(int value)
     {
-        Node** it = &head;
-        while(*it != nullptr)
+        Node **it = &head;
+        while (*it != nullptr)
         {
             it = &(*it)->next;
         }
@@ -46,51 +51,49 @@ public:
     }
 
     /**
-     * @brief 
+     * @brief
      * head->next becomes previous.
      * head becomes head->next.
      * Prev will be reversed linked list
      */
     void reverse()
     {
-        Node* prev = nullptr;
-        Node* next = nullptr;
+        Node *prev = nullptr;
+        Node *next = nullptr;
 
-        while(head != nullptr)
+        while (head != nullptr)
         {
             // need this for last line in scope
             next = head->next;
 
-            //swap
+            // swap
             head->next = prev;
 
-            //for next iteration
+            // for next iteration
             prev = head;
-            head = next; 
+            head = next;
         }
         head = prev;
     }
 
     /**
-     * @brief 
+     * @brief
      * pointer to head and iterate
      */
     void print()
     {
         std::cout << "Linked List: ";
-        Node* it = head;
-        while(it != nullptr)
+        Node *it = head;
+        while (it != nullptr)
         {
             std::cout << it->value << " ";
             it = it->next;
         }
         std::cout << "\n";
     }
-
 };
 
-
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     LinkedList ll;
     ll.push(1);

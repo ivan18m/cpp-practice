@@ -3,3 +3,5 @@
 !*.cpp
 !*.md
 !LICENSE
+!.clang-tidy
+!.clang-format

@@ -1,12 +1,12 @@
 /**
  * @file interval_map.cpp
  * @author Ivan Mercep
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2021-09-06
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <iostream>
@@ -14,15 +14,15 @@
 #include <limits>
 
 template<typename K, typename V>
-class interval_map 
+class interval_map
 {
-	std::map<K, V> m_map;
+    std::map<K, V> m_map;
 
 public:
     // constructor associates whole range of K with val by inserting (K_min, val) into the map
-    interval_map(V const& val) 
+    interval_map(V const &val)
     {
-        m_map.insert(m_map.end(),std::make_pair(std::numeric_limits<K>::lowest(),val));
+        m_map.insert(m_map.end(), std::make_pair(std::numeric_limits<K>::lowest(), val));
     }
 
     // Assign value val to interval [keyBegin, keyEnd).
@@ -31,37 +31,38 @@ public:
     // includes keyBegin, but excludes keyEnd.
     // If !( keyBegin < keyEnd ), this designates an empty interval,
     // and assign must do nothing.
-    void assign(K const& keyBegin, K const& keyEnd, V const& val) 
+    void assign(K const &keyBegin, K const &keyEnd, V const &val)
     {
-        if( !(keyBegin < keyEnd) )
+        if (!(keyBegin < keyEnd))
             return;
         auto l = m_map.lower_bound(keyBegin);
         auto h = m_map.upper_bound(keyEnd);
         ++h;
-        if(l->second == val)
+        if (l->second == val)
             return;
-        if(h->second == val)
+        if (h->second == val)
             return;
-        for(auto i = keyBegin; i < keyEnd; i++)
+        for (auto i = keyBegin; i < keyEnd; i++)
             m_map[i] = val;
     }
 
     // look-up of the value associated with key
-    V const& operator[](K const& key) const 
+    V const &operator[](K const &key) const
     {
-        return ( --m_map.upper_bound(key) )->second;
+        return (--m_map.upper_bound(key))->second;
     }
 
-    void print() 
+    void print()
     {
         std::cout << " K -> V " << std::endl << "--------" << std::endl;
-        for (const auto& kv : m_map) {
+        for (const auto &kv : m_map)
+        {
             std::cout << kv.first << " -> " << kv.second << std::endl;
         }
     }
 };
 
-int main(int argc, char** argv) 
+int main(int argc, char **argv)
 {
     interval_map<unsigned int, char> im('A');
     im.assign(3, 5, '1');
@@ -70,6 +71,6 @@ int main(int argc, char** argv)
 
     im.print();
     std::cout << std::endl;
-    
+
     return 0;
 }

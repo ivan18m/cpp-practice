@@ -19,6 +19,7 @@
  * @copyright Copyright (c) 2021
  *
  */
+#include <iostream>
 
 int solution(int N)
 {
@@ -36,7 +37,7 @@ int solution(int N)
     int i = 19;
     int increment = 10;
 
-    //Optimize search for N [19-50]
+    // Optimize search for N [19-50]
     if (N >= 19 && N < 28)
     {
         i = 199;
@@ -76,10 +77,10 @@ int solution(int N)
     }
 }
 
-int main(int argc, char ** argv)
+int main(int argc, char **argv)
 {
     int input = 19;
-    std::cout << "Input: "<< input << "\n"
+    std::cout << "Input: " << input << "\n";
     std::cout << "Output: " << solution(input) << "\n";
     return 0;
 }

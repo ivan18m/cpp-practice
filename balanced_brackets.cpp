@@ -1,29 +1,24 @@
 /**
  * @file balanced_brackets.cpp
  * @author your name (you@domain.com)
- * @brief 
+ * @brief
  * Solution for the balanced brackets problem using a stack
  * @version 0.1
  * @date 2021-09-06
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <iostream>
 #include <unordered_map>
 
-bool areBalanced(const std::string& s) 
+bool areBalanced(const std::string &s)
 {
     std::string open;
-    std::unordered_map<char, char> opposite 
-    {
-        {'(', ')'},
-        {'[', ']'},
-        {'{', '}'}
-    };
+    std::unordered_map<char, char> opposite{{'(', ')'}, {'[', ']'}, {'{', '}'}};
 
-    for (char c : s) 
+    for (char c : s)
     {
         if (c == '(' || c == '[' || c == '{')
             open.push_back(c);
@@ -35,7 +30,7 @@ bool areBalanced(const std::string& s)
     return open.empty();
 }
 
-int main() 
+int main()
 {
     std::string s = "{[()]}()";
     std::cout << "The string: " << s << " \n";

@@ -1,20 +1,20 @@
 /**
  * @file tree_traversal.cpp
  * @author Ivan Mercep
- * @brief 
+ * @brief
  * This program contains_
  * Binary Tree traversal methods: preorder, inorder, postorder.
  * Functions to print and swap the binary tree.
  * @version 0.1
  * @date 2021-09-06
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #include <iostream>
 
-struct Node 
+struct Node
 {
     int data;
     Node *left;
@@ -22,9 +22,9 @@ struct Node
 };
 
 // <root> <left> <right>
-void preorder(Node* pRoot) 
+void preorder(Node *pRoot)
 {
-    if(pRoot == nullptr)
+    if (pRoot == nullptr)
         return;
 
     std::cout << pRoot->data << " ";
@@ -33,9 +33,9 @@ void preorder(Node* pRoot)
 }
 
 // <left> <root> <right>
-void inorder(Node* pRoot) 
+void inorder(Node *pRoot)
 {
-    if(pRoot == nullptr)
+    if (pRoot == nullptr)
         return;
 
     inorder(pRoot->left);
@@ -44,27 +44,27 @@ void inorder(Node* pRoot)
 }
 
 // <left> <right> <root>
-void postorder(Node* pRoot) 
+void postorder(Node *pRoot)
 {
-    if(pRoot == nullptr)
+    if (pRoot == nullptr)
         return;
-        
+
     postorder(pRoot->left);
     postorder(pRoot->right);
     std::cout << pRoot->data << " ";
 }
 
-Node* getNewNode(int data) 
+Node *getNewNode(int data)
 {
-    Node* newNode = new Node();
+    Node *newNode = new Node();
     newNode->data = data;
     newNode->left = newNode->right = nullptr;
     return newNode;
 }
 
-Node* insert(Node* pRoot, int data) 
+Node *insert(Node *pRoot, int data)
 {
-    if(pRoot == nullptr)
+    if (pRoot == nullptr)
         pRoot = getNewNode(data);
     else if (data <= pRoot->data)
         pRoot->left = insert(pRoot->left, data);
@@ -73,11 +73,11 @@ Node* insert(Node* pRoot, int data)
     return pRoot;
 }
 
-Node* swap(Node* pRoot) 
+Node *swap(Node *pRoot)
 {
-    if(pRoot == nullptr)
+    if (pRoot == nullptr)
         return pRoot;
-    Node* temp = pRoot->left;
+    Node *temp = pRoot->left;
     pRoot->left = pRoot->right;
     pRoot->right = temp;
 
@@ -86,31 +86,31 @@ Node* swap(Node* pRoot)
     return pRoot;
 }
 
-int main() 
+int main()
 {
-    Node* root = nullptr;
+    Node *root = nullptr;
     root = insert(root, 15);
     root = insert(root, 20);
     root = insert(root, 25);
     root = insert(root, 18);
     root = insert(root, 1);
 
-    /*  
+    /*
         15
         /\
        1  20
           /\
-        18  25 
+        18  25
     */
 
     inorder(root);
     std::cout << "\n";
 
     swap(root);
-    
+
     inorder(root);
     std::cout << "\n";
-    
+
     delete root;
     return 0;
 }
