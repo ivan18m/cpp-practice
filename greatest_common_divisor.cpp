@@ -70,6 +70,6 @@ int main(int argc, char **argv)
 
     std::cout << "GCD: " << GCD(num, arr) << "\n";
 
-    delete arr;
+    delete[] arr;
     return 0;
 }
